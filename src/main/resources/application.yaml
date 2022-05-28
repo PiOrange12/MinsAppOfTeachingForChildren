@@ -1,0 +1,36 @@
+mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    开启之后可以在状态栏看到sql语句
+  global-config:
+    db-config:
+      table-prefix: t_
+      logic-delete-field: isdeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+spring:
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/minsappofteachingforchildren?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  redis:
+    host: r-7xvzewtpjz5qps8v5r.redis.rds.aliyuncs.com
+    port: 6379
+
+
+
+server:
+  port: 80
+  servlet:
+    encoding:
+      force: true
+
+dns: http://localhost:80/
+
