@@ -140,4 +140,9 @@ class MinsAppOfTeachingForChildrenApplicationTests {
     public void test11(){
 
     }
+
+    @Test
+    public void test12(){
+
+    }
 }
