@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 
 @Api(value = "视频", tags = "视频管理服务")
@@ -39,27 +38,22 @@ public class FileController {
 
         //存储路径
         ApplicationHome applicationHome = new ApplicationHome(this.getClass());
-        String path1 = applicationHome.getDir().getParentFile().getParentFile().getAbsolutePath() + "\\src\\main\\resources\\static\\img\\";
-        String path2 = applicationHome.getDir().getParentFile().getAbsolutePath() + "\\src\\main\\resources\\static\\img\\";
-        String path3 = applicationHome.getDir().getAbsolutePath() + "\\src\\main\\resources\\static\\img\\";
-        HashMap<String, String> map = new HashMap<>();
-        map.put("path1" ,path1);
-        map.put("path2" ,path2);
-        map.put("path3" ,path3);
-        map.put("separatorChar", File.separator);
-//        if(!file.isEmpty()){
-//            //文件名
-//            String filename = UUID.randomUUID()+"-"+file.getOriginalFilename();
-//            file.transferTo(new File(path+filename));
-//            FIle FIle = new FIle();
-//            FIle.setLocalAddress("img/"+filename);
-//            String geshi = filename.substring(filename.lastIndexOf(".")+1,filename.length());
-//            FIle.setSuffix(geshi);
-//            if (fileService.save(FIle)) {
-//                return new Result("200","上传成功");
-//            }
-//        }
-        return new Result("500","上传失败", map);
+        String path = applicationHome.getDir().getParentFile().getParentFile().getAbsolutePath()
+                +File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"txt"+File.separator;
+
+        if(!file.isEmpty()){
+            //文件名
+            String filename = UUID.randomUUID()+"-"+file.getOriginalFilename();
+            file.transferTo(new File(path+filename));
+            FIle FIle = new FIle();
+            FIle.setLocalAddress("img/"+filename);
+            String geshi = filename.substring(filename.lastIndexOf(".")+1,filename.length());
+            FIle.setSuffix(geshi);
+            if (fileService.save(FIle)) {
+                return new Result("200","上传成功");
+            }
+        }
+        return new Result("500","上传失败");
     }
 
     /**
